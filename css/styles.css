@@ -30,12 +30,12 @@ body {
     color: #ff0000;
 }
 .form-control {
-    background-color: #afafaf;
+    background-color: #fff;
     border-color: #ff0000;
     color: #fff;
 }
 .form-control:focus {
-    background-color: #afafaf;
+    background-color: #fff;
     border-color: #ff0000;
     color: #fff;
     box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
