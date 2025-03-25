@@ -104,7 +104,7 @@
                     required
                   ></textarea>
                 </div>
-                <button type="submit" class="btn btn-red">Submit</button>
+                <button type="submit" class="btn btn-red" id="submitButton">Submit</button>
               </form>
             </div>
           </div>
@@ -162,23 +162,43 @@
     />
 
     <script>
-      document.querySelector("form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
+      document
+        .getElementById("submitButton")
+        .addEventListener("click", function (e) {
+          e.preventDefault(); // Prevent default form behavior if using a form
 
-        const response = await fetch("https://script.google.com/macros/s/AKfycbyUDvZmCt-2MPIsVsNYmrnTX1-e-3ZpvhN76cFwL8IYn8sYxAHSHLwPU_NBlLdSBmrk4Q/exechttps://script.google.com/macros/s/AKfycbwFplpjSN3C1uW2CJnWq91FnoTAy96WRBdt0UGu1TerdVjh0fVD1LMbZdJWMEtePgljrg/exec", {
-          method: "POST",
-          body: JSON.stringify({ email, message }),
-          headers: { "Content-Type": "application/json" },
+          // Get form data
+          const email = document.getElementById("email").value; // Adjust ID as needed
+          const message = document.getElementById("message").value; // Adjust ID as needed
+
+          // Data to send
+          const data = {
+            email: email,
+            message: message,
+          };
+
+          // Replace with your Google Apps Script Web App URL
+          const scriptURL =
+            "https://script.google.com/macros/s/AKfycbxJOW7g8JdERB0Qxq9dRAsmBiaCChMk274xMQgIGNzZoRmDGhA9aW_i0VPAZ_kl8nuLtw/exec";
+
+          // Send POST request
+          fetch(scriptURL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+            mode: "no-cors", // Use this temporarily to bypass CORS, but see notes below
+          })
+            .then((response) => {
+              console.log("Success:", response);
+              alert("Submission successful!");
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("Submission failed.");
+            });
         });
-
-        if (response.ok) {
-          alert("Message sent successfully!");
-        } else {
-          alert("Failed to send message.");
-        }
-      });
     </script>
   </body>
 </html>
