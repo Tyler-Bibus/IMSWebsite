@@ -1,0 +1,134 @@
+body {
+    background-color: #000; /* Black theme */
+    color: #fff; /* White text */
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ff0000; /* Red hover effect */
+}
+
+.btn-red {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.btn-red:hover {
+    background-color: #cc0000;
+}
+
+.card {
+    background-color: #111; /* Black card background */
+    border: 1px solid #ff0000; /* Red border */
+}
+
+.footer {
+    background-color: #111;
+    color: #fff;
+}
+
+.footer a {
+    color: #ff0000;
+}
+.form-control {
+    background-color: #333;
+    border-color: #ff0000;
+    color: #fff;
+}
+.form-control:focus {
+    background-color: #333;
+    border-color: #ff0000;
+    color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
+}
+
+/* Dashboard Styles */
+        /* Dashboard Container */
+        .dash-container {
+            max-width: 320px;
+            height: 240px;
+            background: #000;
+            border: 4px solid #ff0000;
+            border-radius: 10px;
+            padding: 5px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        /* Neon Glow Effect */
+        .neon-text {
+            text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+        }
+        /* Speed Circle */
+        .speed-circle {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff0000 10%, #000 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        /* RPM Bar */
+        .rpm-bar {
+            position: absolute;
+            top: 120px;
+            left: 10px;
+            width: 200px;
+            height: 20px;
+            background: #333;
+            border: 1px solid #ff0000;
+        }
+        .rpm-fill {
+            width: 70%; /* Simulated 70% RPM */
+            height: 100%;
+            background: #ff0000;
+            transition: width 0.5s ease;
+        }
+        /* Gear Indicator */
+        .gear-box {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            background: #000;
+            border: 2px solid #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        /* Mini Map */
+        .mini-map {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 90px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #ff0000;
+            overflow: hidden;
+        }
+        .map-route {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 70px;
+            height: 50px;
+            background: url('https://via.placeholder.com/70x50?text=Map+Route') no-repeat;
+            background-size: cover;
+        }
+        /* Status Icons */
+        .status-icons {
+            position: absolute;
+            bottom: 10px;
+            left: 120px;
+            display: flex;
+            gap: 10px;
+        }

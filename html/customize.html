@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBR Dash - Customization Concept V2</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/css/styles.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Dashboard Container */
+        .dash-container {
+            max-width: 320px;
+            height: 240px;
+            background: #000;
+            border: 4px solid #ff0000;
+            border-radius: 10px;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        /* Speed Dial */
+        .speed-dial {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #333;
+            border: 2px solid #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+        /* RPM Grid */
+        .rpm-grid {
+            position: absolute;
+            top: 110px;
+            left: 10px;
+            width: 140px;
+            height: 40px;
+            display: flex;
+            gap: 2px;
+        }
+        .rpm-block {
+            flex: 1;
+            background: #333;
+            border: 1px solid #ff0000;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .rpm-active {
+            background: #ff0000;
+        }
+        .rpm-label {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+        /* Gear Box */
+        .gear-box {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            height: 60px;
+            background: #333;
+            border: 2px solid #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+        /* Lean Angle Semicircle */
+        .lean-angle {
+            position: absolute;
+            bottom: 10px;
+            left: 160px;
+            width: 80px;
+            height: 40px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .lean-canvas {
+            width: 80px;
+            height: 80px;
+            transition: color 0.3s ease;
+        }
+        .lean-label {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+        /* Fuel Gauge */
+        .fuel-gauge {
+            position: absolute;
+            top: 150px;
+            right: 0px;
+            width: 40px; /* Widened for image */
+            height: 80px;
+            background: #333;
+            border: 2px solid #ff0000;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        .fuel-fill {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 70%;
+            background: #ff0000;
+            transition: background-color 0.3s ease, height 0.3s ease;
+        }
+        .fuel-label {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+        .fuel-icon {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            z-index: 1;
+        }
+        /* Config Panel */
+        .config-panel {
+            background: #000;
+            border: 2px solid #ff0000;
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">CBR Dash</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/html/home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/html/features.html">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/html/about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/html/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Customization Concept Section -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <h1 class="display-4 text-center text-white mb-4">Dashboard Customization V2</h1>
+            <p class="lead text-center text-white mb-5">Craft Your Perfect Ride Display</p>
+            <div class="row justify-content-center">
+                <!-- Dashboard Preview -->
+                <div class="col-md-6 text-center mb-4">
+                    <div class="dash-container mx-auto">
+                        <div class="speed-dial" id="speed">68 mph</div>
+                        <div class="rpm-grid" id="rpmGrid">
+                            <span class="rpm-label" id="rpmLabel">RPM</span>
+                            <div class="rpm-block rpm-active"></div>
+                            <div class="rpm-block rpm-active"></div>
+                            <div class="rpm-block rpm-active"></div>
+                            <div class="rpm-block rpm-active"></div>
+                            <div class="rpm-block"></div>
+                            <div class="rpm-block"></div>
+                        </div>
+                        <div class="gear-box" id="gear">4</div>
+                        <div class="lean-angle" id="lean">
+                            <span class="lean-label" id="leanLabel">Lean</span>
+                            <canvas class="lean-canvas" id="leanCanvas" width="80" height="80"></canvas>
+                        </div>
+                        <div class="fuel-gauge" id="fuel">
+                            <span class="fuel-label" id="fuelLabel">Fuel</span>
+                            <div class="fuel-fill" id="fuelFill"></div>
+                            <img src="https://em-content.zobj.net/source/apple/391/fuel-pump_26fd.png" class="fuel-icon" id="fuelIcon" alt="Fuel Pump">
+                        </div>
+                    </div>
+                </div>
+                <!-- Configuration Panel -->
+                <div class="col-md-4">
+                    <div class="config-panel">
+                        <h3 class="text-white mb-3">Tune Your Dash</h3>
+                        <!-- Toggle Switches -->
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="speedToggle" checked>
+                            <label class="form-check-label text-white" for="speedToggle">Speed Dial</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="rpmToggle" checked>
+                            <label class="form-check-label text-white" for="rpmToggle">RPM Grid</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="gearToggle" checked>
+                            <label class="form-check-label text-white" for="gearToggle">Gear Box</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="leanToggle" checked>
+                            <label class="form-check-label text-white" for="leanToggle">Lean Angle</label>
+                        </div>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" id="fuelToggle" checked>
+                            <label class="form-check-label text-white" for="fuelToggle">Fuel Gauge</label>
+                        </div>
+                        <!-- Color Pickers -->
+                        <div class="mb-3">
+                            <label for="accentColor" class="form-label text-white">Accent Color</label>
+                            <input type="color" class="form-control form-control-color" id="accentColor" value="#ff0000" title="Choose accent color">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bgColor" class="form-label text-white">Background Color</label>
+                            <input type="color" class="form-control form-control-color" id="bgColor" value="#000000" title="Choose background color">
+                        </div>
+                        <!-- Lean Angle Slider -->
+                        <div class="mb-3">
+                            <label for="leanAngle" class="form-label text-white">Lean Angle (-45° to 45°)</label>
+                            <input type="range" class="form-range" id="leanAngle" min="-45" max="45" value="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-3 text-center bg-dark text-white">
+        <div class="container">
+            <p>© 2025 CBR Dash - Designed for Riders, by Riders</p>
+            <a href="#" class="text-danger mx-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-danger mx-2"><i class="bi bi-github"></i></a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- External JS -->
+    <script src="/js/customize.js"></script>
+</body>
+</html>
